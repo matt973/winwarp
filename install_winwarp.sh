@@ -72,6 +72,27 @@ chmod +x "$DEST"
 echo "[OK] Script installato in: $DEST"
 echo "[OK] Permessi di esecuzione impostati."
 
+# Verifica e crea shutdown.sh se mancante
+SHUTDOWN_SCRIPT="/userdata/system/scripts/shutdown.sh"
+echo ""
+echo "Verifica script di sistema..."
+if [ ! -f "$SHUTDOWN_SCRIPT" ]; then
+    echo "[ATTENZIONE] $SHUTDOWN_SCRIPT non trovato. Creazione in corso..."
+    mkdir -p /userdata/system/scripts
+    cat > "$SHUTDOWN_SCRIPT" << 'SHUTDOWN_EOF'
+#!/bin/bash
+sleep 2
+echo 1 > /proc/sys/kernel/sysrq
+SHUTDOWN_EOF
+    chmod +x "$SHUTDOWN_SCRIPT"
+    echo "[OK] shutdown.sh creato."
+else
+    echo "[OK] shutdown.sh già presente."
+fi
+
+# Salva overlay per persistenza
+batocera-save-overlay > /dev/null 2>&1 && echo "[OK] Overlay salvato (persistenza garantita)." || echo "[ATTENZIONE] batocera-save-overlay non disponibile."
+
 # Verifica efibootmgr
 echo ""
 echo "Verifica dipendenze..."
