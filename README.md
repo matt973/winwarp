@@ -151,7 +151,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Retroamestation**
+**Retrogamestation**
 - GitHub: [@matt973](https://github.com/matt973)
 
 ---
