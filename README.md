@@ -153,7 +153,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 **Retroamestation**
 - GitHub: [@matt973](https://github.com/matt973)
-- Shop: [retrogamestation.shop](https://retrogamestation.shop)
 
 ---
 
